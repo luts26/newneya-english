@@ -1,0 +1,1 @@
+export const lesettings1 = { "lessons": { "select": 0, "right": 0, "wrong": 0, "count": 0, "time": 0 }, "words": { "lang": "en", "right": 0, "wrong": 0, "count": 0, "time": 0 }, "form3": { "right": 0, "wrong": 0, "count": 0, "time": 0 }, "main": "words" }
