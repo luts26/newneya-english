@@ -1,4 +1,3 @@
-@import url("https://use.fontawesome.com/releases/v5.4.1/css/all.css");
 @import url("./bootstrap.min.css");
 
 body {
@@ -344,3 +343,11 @@ body {
 		border-radius: 0;
 	}
 }
+/* Local icons: no CDN or font download required. */
+.fas { font-style: normal; }
+.fa-volume-mute::before { content: '♫'; }
+.fa-volume-up::before { content: '🔊'; }
+.pwa-toolbar { display:flex; flex-wrap:wrap; gap:8px; align-items:center; padding:8px 12px; font-size:12px; background:#f3f3f3; }
+.pwa-toolbar button { padding:6px 10px; border:1px solid #777; border-radius:6px; background:white; }
+body { padding-bottom:calc(60px + env(safe-area-inset-bottom)); }
+.top_menu { bottom:env(safe-area-inset-bottom); }

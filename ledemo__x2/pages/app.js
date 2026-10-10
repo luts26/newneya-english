@@ -103,7 +103,20 @@ export default class App {
 		$el.classList.add('play')
 		$el.querySelector('.fas').classList.remove('fa-volume-mute')
 		$el.querySelector('.fas').classList.add('fa-volume-up')
-		window.speechSynthesis.speak(new SpeechSynthesisUtterance(text))
+		if (!('speechSynthesis' in window)) {
+            alert('Озвучення недоступне у цьому браузері.');
+        } else {
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US';
+            const voices = window.speechSynthesis.getVoices().filter(v => /^en[-_]/i.test(v.lang));
+            utterance.voice = voices.find(v => v.localService) || voices[0] || null;
+            if (!navigator.onLine && !voices.some(v => v.localService)) {
+                alert('Для озвучення офлайн встановіть англійський голос у налаштуваннях телефону.');
+            } else {
+                window.speechSynthesis.cancel();
+                window.speechSynthesis.speak(utterance);
+            }
+        }
 		setTimeout(() => {
 			$el.classList.remove('play')
 			$el.querySelector('.fas').classList.remove('fa-volume-up')
@@ -135,13 +148,6 @@ export default class App {
 
 		window.localStorage.setItem('le-sett', JSON.stringify(this.lesettings))
 
-		if (file) {
-			fetch('/learn-english-demo_save?x=ledemo.v21', {
-				method: 'POST',
-				headers: {'Content-type': 'application/json'},
-				body: JSON.stringify({...this.lesettings})
-			})
-		}
 	}
 
 	beforeDestroy() {

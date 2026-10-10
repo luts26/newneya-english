@@ -37,7 +37,7 @@ const destroyApp = () => {
 if (window.localStorage.getItem('le-sett-main'))
 	startClass = window.localStorage.getItem('le-sett-main')
 
-initApp(startClass || 'words')
+initApp(Object.hasOwn(appClassesDefault, startClass) ? startClass : 'words')
 
 
 document.querySelector('body').addEventListener('click', e => {
@@ -69,3 +69,9 @@ window.addEventListener('resize', e => {
 	}
 })
 
+
+const saveProgress = () => appClasses[startClass].saveSettings();
+window.addEventListener('pagehide', saveProgress);
+document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'hidden') saveProgress();
+});

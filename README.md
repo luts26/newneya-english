@@ -1,5 +1,7 @@
 # Learn English
 
+Offline PWA edition. Installation: [PWA-INSTALL.md](PWA-INSTALL.md).
+
 A lightweight browser-based application for practicing English vocabulary, sentences, grammar, and verb forms.
 
 The application was originally created as a personal learning tool. The product idea, learning workflows, UI, and frontend architecture were designed and implemented independently from scratch rather than being based on a tutorial or predefined specification.
@@ -185,7 +187,7 @@ localStorage
 
 This allows previously saved progress and learning settings to remain available without depending on a backend for the core training workflow.
 
-The project also contains an experimental lightweight mechanism for synchronizing application settings with a server.
+The PWA version stores progress locally and does not send settings to a server. See [PWA-INSTALL.md](PWA-INSTALL.md) for installation and offline details.
 
 ## Responsive UI
 
@@ -233,7 +235,7 @@ Possible future improvements include:
 - better learning progress analytics
 - spaced repetition
 - synchronization between devices
-- improved offline application support
+- backup and restore of local progress
 - AI-assisted speaking and writing practice
 - pronunciation feedback
 
